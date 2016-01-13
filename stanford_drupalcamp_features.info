@@ -1,0 +1,9 @@
+name = Stanford DrupalCamp Features
+description = This module is a dependency wrapper for the sub features.
+core = 7.x
+package = Stanford DrupalCamp
+version = 7.x-1.x
+project = stanford_drupalcamp_features
+; stylesheets[all][] = css/stanford_module.css
+; scripts[] = js/stanford_module.js
+project status url = https://github.com/SU-SWS/stanford_drupalcamp_features

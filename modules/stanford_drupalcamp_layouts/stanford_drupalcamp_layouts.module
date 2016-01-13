@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Stanford DrupalCamp Layouts feature.
+ */
+
+include_once 'stanford_drupalcamp_layouts.features.inc';
