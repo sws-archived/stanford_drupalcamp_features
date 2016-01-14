@@ -148,7 +148,6 @@ function stanford_drupalcamp_sponsors_views_default_views() {
   $handler->display->display_options['fields']['field_s_sponsorship_level']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_s_sponsorship_level']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['path'] = 'sponsors';
-  $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Sponsors';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';

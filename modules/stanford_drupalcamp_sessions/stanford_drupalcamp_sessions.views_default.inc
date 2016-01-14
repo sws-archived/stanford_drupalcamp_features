@@ -323,17 +323,12 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler->display->display_options['filters']['field_s_day_value']['expose']['operator'] = 'field_s_day_value_op';
   $handler->display->display_options['filters']['field_s_day_value']['expose']['identifier'] = 'field_s_day_value';
   $handler->display->display_options['path'] = 'schedule/friday-april-10';
-  $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Friday Schedule';
   $handler->display->display_options['menu']['description'] = 'Schedule for Friday, April 10th';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
-  $handler->display->display_options['tab_options']['type'] = 'normal';
-  $handler->display->display_options['tab_options']['title'] = 'Sessions';
-  $handler->display->display_options['tab_options']['weight'] = '0';
-  $handler->display->display_options['tab_options']['name'] = 'main-menu';
 
   /* Display: Saturday Schedule */
   $handler = $view->new_display('page', 'Saturday Schedule', 'page_1');
@@ -515,9 +510,7 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler->display->display_options['filters']['field_s_day_value']['expose']['operator'] = 'field_s_day_value_op';
   $handler->display->display_options['filters']['field_s_day_value']['expose']['identifier'] = 'field_s_day_value';
   $handler->display->display_options['path'] = 'schedule/saturday-april-11';
-  $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Saturday Schedule';
-  $handler->display->display_options['menu']['description'] = 'Schedule for Saturday, April 11th';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';
   $handler->display->display_options['menu']['context'] = 0;
@@ -686,10 +679,6 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler->display->display_options['menu']['name'] = 'main-menu';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
-  $handler->display->display_options['tab_options']['type'] = 'normal';
-  $handler->display->display_options['tab_options']['title'] = 'Sessions';
-  $handler->display->display_options['tab_options']['weight'] = '0';
-  $handler->display->display_options['tab_options']['name'] = 'main-menu';
 
   /* Display: Proposed Sessions */
   $handler = $view->new_display('page', 'Proposed Sessions', 'proposed_sessions');
@@ -726,15 +715,11 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler->display->display_options['filters']['nid']['operator'] = 'regular_expression';
   $handler->display->display_options['filters']['nid']['value']['value'] = '[^173,175]';
   $handler->display->display_options['path'] = 'sessions/proposed';
-  $handler->display->display_options['menu']['type'] = 'default tab';
   $handler->display->display_options['menu']['title'] = 'Proposed Sessions';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
-  $handler->display->display_options['tab_options']['title'] = 'Sessions';
-  $handler->display->display_options['tab_options']['weight'] = '0';
-  $handler->display->display_options['tab_options']['name'] = 'main-menu';
 
   /* Display: Accepted Sessions */
   $handler = $view->new_display('page', 'Accepted Sessions', 'accepted_sessions');
@@ -764,7 +749,6 @@ function stanford_drupalcamp_sessions_views_default_views() {
     'Accepted' => 'Accepted',
   );
   $handler->display->display_options['path'] = 'sessions/accepted';
-  $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Accepted Sessions';
   $handler->display->display_options['menu']['weight'] = '1';
   $handler->display->display_options['menu']['name'] = 'main-menu';
@@ -1253,10 +1237,6 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler->display->display_options['menu']['name'] = 'main-menu';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
-  $handler->display->display_options['tab_options']['type'] = 'normal';
-  $handler->display->display_options['tab_options']['title'] = 'Sessions';
-  $handler->display->display_options['tab_options']['weight'] = '0';
-  $handler->display->display_options['tab_options']['name'] = 'main-menu';
 
   /* Display: My Schedule */
   $handler = $view->new_display('page', 'My Schedule', 'my_schedule');
@@ -1400,7 +1380,6 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler->display->display_options['sorts']['field_location_value']['field'] = 'field_location_value';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['path'] = 'schedule/mine';
-  $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'My Schedule';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';
@@ -1516,10 +1495,6 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler->display->display_options['menu']['name'] = 'main-menu';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
-  $handler->display->display_options['tab_options']['type'] = 'normal';
-  $handler->display->display_options['tab_options']['title'] = 'Sessions';
-  $handler->display->display_options['tab_options']['weight'] = '0';
-  $handler->display->display_options['tab_options']['name'] = 'main-menu';
   $export['sessions'] = $view;
 
   $view = new view();
