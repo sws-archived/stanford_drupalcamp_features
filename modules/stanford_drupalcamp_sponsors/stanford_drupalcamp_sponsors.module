@@ -1,8 +1,7 @@
 <?php
 /**
  * @file
- * File description
- *
- * Long description
+ * Code for the Stanford DrupalCamp Sponsors feature.
  */
 
+include_once 'stanford_drupalcamp_sponsors.features.inc';
