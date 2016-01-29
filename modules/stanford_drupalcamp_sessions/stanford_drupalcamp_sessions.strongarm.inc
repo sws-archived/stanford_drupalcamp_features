@@ -99,16 +99,19 @@ function stanford_drupalcamp_sessions_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '14',
+          'weight' => '12',
         ),
         'redirect' => array(
-          'weight' => '13',
+          'weight' => '11',
         ),
         'mollom' => array(
           'weight' => '16',
         ),
         'xmlsitemap' => array(
           'weight' => '15',
+        ),
+        'metatags' => array(
+          'weight' => '13',
         ),
       ),
       'display' => array(),
@@ -153,9 +156,7 @@ function stanford_drupalcamp_sessions_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_time_slot';
-  $strongarm->value = array(
-    0 => 'main-menu',
-  );
+  $strongarm->value = array();
   $export['menu_options_time_slot'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -201,7 +202,7 @@ function stanford_drupalcamp_sessions_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_time_slot';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['node_preview_time_slot'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -215,7 +216,7 @@ function stanford_drupalcamp_sessions_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_time_slot';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_time_slot'] = $strongarm;
 
   return $export;

@@ -77,7 +77,7 @@ function stanford_drupalcamp_sessions_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 4,
+      'weight' => 6,
     ),
   );
 
@@ -135,7 +135,7 @@ function stanford_drupalcamp_sessions_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 12,
+      'weight' => 10,
     ),
   );
 
@@ -209,44 +209,7 @@ function stanford_drupalcamp_sessions_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 2,
-    ),
-  );
-
-  // Exported field_instance: 'node-stanford_session-field_s_day'
-  $field_instances['node-stanford_session-field_s_day'] = array(
-    'bundle' => 'stanford_session',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Choose the day on which the session will take place.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 10,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_s_day',
-    'label' => 'Day',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 5,
+      'weight' => 4,
     ),
   );
 
@@ -335,53 +298,6 @@ function stanford_drupalcamp_sessions_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 11,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'node-stanford_session-field_s_session_date_and_time'
-  $field_instances['node-stanford_session-field_s_session_date_and_time'] = array(
-    'bundle' => 'stanford_session',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_s_session_date_and_time',
-    'label' => 'Session Date and Time',
-    'required' => 0,
-    'settings' => array(
-      'default_value' => 'now',
-      'default_value2' => 'strtotime',
-      'default_value_code' => '',
-      'default_value_code2' => '+1 hour',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 15,
-        'input_format' => 'M j Y - H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'text_parts' => array(),
-        'year_range' => '-0:+0',
-      ),
-      'type' => 'date_select',
       'weight' => 9,
     ),
   );
@@ -466,44 +382,7 @@ function stanford_drupalcamp_sessions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance: 'node-stanford_session-field_s_time'
-  $field_instances['node-stanford_session-field_s_time'] = array(
-    'bundle' => 'stanford_session',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Choose the time slot for the session.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
-        'weight' => 11,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_s_time',
-    'label' => 'Time',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 6,
+      'weight' => 3,
     ),
   );
 
@@ -540,21 +419,28 @@ function stanford_drupalcamp_sessions_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 3,
+      'weight' => 5,
     ),
   );
 
-  // Exported field_instance: 'node-stanford_session-field_time_slot'
-  $field_instances['node-stanford_session-field_time_slot'] = array(
+  // Exported field_instance: 'node-stanford_session-field_session_day'
+  $field_instances['node-stanford_session-field_session_day'] = array(
     'bundle' => 'stanford_session',
-    'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The day this session will be held.',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+        ),
+        'type' => 'date_default',
         'weight' => 9,
       ),
       'teaser' => array(
@@ -565,17 +451,68 @@ function stanford_drupalcamp_sessions_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_time_slot',
+    'field_name' => 'field_session_day',
+    'label' => 'Session Day',
+    'required' => 1,
+    'settings' => array(
+      'default_value' => 'strtotime',
+      'default_value2' => 'same',
+      'default_value_code' => '+62 days',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'display_all_day' => 0,
+        'increment' => 15,
+        'input_format' => 'M j Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'node-stanford_session-field_session_time_slot'
+  $field_instances['node-stanford_session-field_session_time_slot'] = array(
+    'bundle' => 'stanford_session',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 10,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_session_time_slot',
     'label' => 'Time Slot',
-    'required' => FALSE,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 10,
+      'weight' => 2,
     ),
   );
 
@@ -665,6 +602,7 @@ function stanford_drupalcamp_sessions_field_default_field_instances() {
       'active' => 1,
       'module' => 'date',
       'settings' => array(
+        'display_all_day' => 0,
         'increment' => 15,
         'input_format' => 'm/d/Y - H:i:s',
         'input_format_custom' => '',
@@ -685,17 +623,15 @@ function stanford_drupalcamp_sessions_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Audience');
   t('Body');
-  t('Choose the day on which the session will take place.');
-  t('Choose the time slot for the session.');
-  t('Day');
   t('Image');
   t('Location');
   t('Session Date and Time');
+  t('Session Day');
   t('Session Description');
   t('Session Status');
   t('Slides');
   t('Speaker/Moderator(s)');
-  t('Time');
+  t('The day this session will be held.');
   t('Time Slot');
   t('Track');
 

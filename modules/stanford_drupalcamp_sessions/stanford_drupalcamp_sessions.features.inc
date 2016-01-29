@@ -57,11 +57,11 @@ function stanford_drupalcamp_sessions_flag_default_flags() {
     'access_author' => '',
     'show_contextual_link' => 0,
     'i18n' => 0,
-    'api_version' => 3,
     'module' => 'stanford_drupalcamp_sessions',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 3,
   );
   return $flags;
 
@@ -78,14 +78,6 @@ function stanford_drupalcamp_sessions_node_info() {
       'description' => '',
       'has_title' => '1',
       'title_label' => t('Name of the Session'),
-      'help' => '',
-    ),
-    'time_slot' => array(
-      'name' => t('Time slot'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Title'),
       'help' => '',
     ),
   );

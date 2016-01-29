@@ -32,10 +32,10 @@ function stanford_drupalcamp_sessions_taxonomy_default_vocabularies() {
         ),
       ),
     ),
-    'time' => array(
-      'name' => 'Time',
-      'machine_name' => 'time',
-      'description' => 'Time of session',
+    'session_time_slot' => array(
+      'name' => 'Session Time Slot',
+      'machine_name' => 'session_time_slot',
+      'description' => 'The various time slots for the event.',
       'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => 0,
