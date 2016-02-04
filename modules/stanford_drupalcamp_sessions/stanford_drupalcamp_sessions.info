@@ -42,6 +42,7 @@ features[variable][] = node_preview_stanford_session
 features[variable][] = node_submitted_stanford_session
 features[views_view][] = drupalcamp_schedule
 features[views_view][] = drupalcamp_sessions
+features[views_view][] = drupalcamp_my_schedule
 features_exclude[dependencies][ctools] = ctools
 features_exclude[dependencies][entity] = entity
 features_exclude[dependencies][features] = features
