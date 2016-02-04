@@ -406,6 +406,15 @@ function stanford_drupalcamp_sponsor_views_default_views() {
   $handler = $view->new_display('block', 'Gold Sponsors Block', 'gold_sponsors_block');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Gold Sponsors';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['label'] = 'Fix Me';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'Fix me. I am missing my tid in the filters.';
+  $handler->display->display_options['empty']['area']['format'] = 'content_editor_text_format';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -427,7 +436,7 @@ function stanford_drupalcamp_sponsor_views_default_views() {
   $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
   $handler->display->display_options['filters']['tid']['field'] = 'tid';
   $handler->display->display_options['filters']['tid']['value'] = array(
-    0 => '99',
+    0 => '13',
   );
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'stanford_affiliate_organization_type';
   $export['sponsors_large_block'] = $view;
