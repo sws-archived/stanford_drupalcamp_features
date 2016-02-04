@@ -66,13 +66,6 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_s_time']['id'] = 'field_s_time';
-  $handler->display->display_options['fields']['field_s_time']['table'] = 'field_data_field_s_time';
-  $handler->display->display_options['fields']['field_s_time']['field'] = 'field_s_time';
-  $handler->display->display_options['fields']['field_s_time']['label'] = '';
-  $handler->display->display_options['fields']['field_s_time']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_s_time']['element_label_colon'] = FALSE;
   /* Field: Content: Speaker/Moderator(s) */
   $handler->display->display_options['fields']['field_s_speakers']['id'] = 'field_s_speakers';
   $handler->display->display_options['fields']['field_s_speakers']['table'] = 'field_data_field_s_speakers';
@@ -120,10 +113,22 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Sort criterion: Content: Session Date and Time (field_s_session_date_and_time) */
-  $handler->display->display_options['sorts']['field_s_session_date_and_time_value']['id'] = 'field_s_session_date_and_time_value';
-  $handler->display->display_options['sorts']['field_s_session_date_and_time_value']['table'] = 'field_data_field_s_session_date_and_time';
-  $handler->display->display_options['sorts']['field_s_session_date_and_time_value']['field'] = 'field_s_session_date_and_time_value';
+  /* Contextual filter: Date: Date (node) */
+  $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
+  $handler->display->display_options['arguments']['date_argument']['table'] = 'node';
+  $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
+  $handler->display->display_options['arguments']['date_argument']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['date_argument']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['date_argument']['title'] = 'Session Schedule For %1';
+  $handler->display->display_options['arguments']['date_argument']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['date_argument']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['date_argument']['validate']['fail'] = 'empty';
+  $handler->display->display_options['arguments']['date_argument']['granularity'] = 'day';
+  $handler->display->display_options['arguments']['date_argument']['granularity_reset'] = 0;
+  $handler->display->display_options['arguments']['date_argument']['use_fromto'] = 'no';
+  $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
+    'field_data_field_session_day.field_session_day_value' => 'field_data_field_session_day.field_session_day_value',
+  );
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
@@ -137,12 +142,13 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = '1';
 
-  /* Display: Friday Schedule */
-  $handler = $view->new_display('page', 'Friday Schedule', 'all_sessions');
+  /* Display: Schedule */
+  $handler = $view->new_display('page', 'Schedule', 'all_sessions');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Schedule - Friday, April 10th';
+  $handler->display->display_options['title'] = 'Session Schedule';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'views-row-lines';
+  $handler->display->display_options['display_description'] = 'Schedule Grouped By Time Slot';
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['defaults']['query'] = FALSE;
@@ -153,9 +159,9 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
-      'field' => 'field_s_time',
+      'field' => 'field_session_time_slot',
       'rendered' => 1,
-      'rendered_strip' => 0,
+      'rendered_strip' => 1,
     ),
   );
   $handler->display->display_options['defaults']['style_options'] = FALSE;
@@ -211,15 +217,6 @@ function stanford_drupalcamp_sessions_views_default_views() {
     'link' => 1,
   );
   $handler->display->display_options['fields']['field_s_speakers']['delta_offset'] = '0';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_s_time']['id'] = 'field_s_time';
-  $handler->display->display_options['fields']['field_s_time']['table'] = 'field_data_field_s_time';
-  $handler->display->display_options['fields']['field_s_time']['field'] = 'field_s_time';
-  $handler->display->display_options['fields']['field_s_time']['label'] = '';
-  $handler->display->display_options['fields']['field_s_time']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_s_time']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_s_time']['alter']['text'] = '<h2>[field_s_time]</h2>';
-  $handler->display->display_options['fields']['field_s_time']['element_label_colon'] = FALSE;
   /* Field: Content: Location */
   $handler->display->display_options['fields']['field_location']['id'] = 'field_location';
   $handler->display->display_options['fields']['field_location']['table'] = 'field_data_field_location';
@@ -274,20 +271,18 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler->display->display_options['fields']['ops']['relationship'] = 'flag_content_rel';
   $handler->display->display_options['fields']['ops']['label'] = '';
   $handler->display->display_options['fields']['ops']['element_label_colon'] = FALSE;
+  /* Field: Content: Time Slot */
+  $handler->display->display_options['fields']['field_session_time_slot']['id'] = 'field_session_time_slot';
+  $handler->display->display_options['fields']['field_session_time_slot']['table'] = 'field_data_field_session_time_slot';
+  $handler->display->display_options['fields']['field_session_time_slot']['field'] = 'field_session_time_slot';
+  $handler->display->display_options['fields']['field_session_time_slot']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_session_time_slot']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Broken/missing handler */
-  $handler->display->display_options['sorts']['field_s_day_value']['id'] = 'field_s_day_value';
-  $handler->display->display_options['sorts']['field_s_day_value']['table'] = 'field_data_field_s_day';
-  $handler->display->display_options['sorts']['field_s_day_value']['field'] = 'field_s_day_value';
   /* Sort criterion: Taxonomy term: Weight */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
   $handler->display->display_options['sorts']['weight']['relationship'] = 'term_node_tid';
-  /* Sort criterion: Broken/missing handler */
-  $handler->display->display_options['sorts']['field_s_time_tid']['id'] = 'field_s_time_tid';
-  $handler->display->display_options['sorts']['field_s_time_tid']['table'] = 'field_data_field_s_time';
-  $handler->display->display_options['sorts']['field_s_time_tid']['field'] = 'field_s_time_tid';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -307,212 +302,13 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = '1';
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['field_s_day_value']['id'] = 'field_s_day_value';
-  $handler->display->display_options['filters']['field_s_day_value']['table'] = 'field_data_field_s_day';
-  $handler->display->display_options['filters']['field_s_day_value']['field'] = 'field_s_day_value';
-  $handler->display->display_options['filters']['field_s_day_value']['value'] = array(
-    'Friday, April 10th' => 'Friday, April 10th',
-  );
-  $handler->display->display_options['filters']['field_s_day_value']['expose']['operator_id'] = 'field_s_day_value_op';
-  $handler->display->display_options['filters']['field_s_day_value']['expose']['label'] = 'Day (field_s_day)';
-  $handler->display->display_options['filters']['field_s_day_value']['expose']['operator'] = 'field_s_day_value_op';
-  $handler->display->display_options['filters']['field_s_day_value']['expose']['identifier'] = 'field_s_day_value';
-  $handler->display->display_options['path'] = 'schedule/friday-april-10';
+  $handler->display->display_options['path'] = 'schedule/%';
   $handler->display->display_options['menu']['title'] = 'Friday Schedule';
   $handler->display->display_options['menu']['description'] = 'Schedule for Friday, April 10th';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
-
-  /* Display: Saturday Schedule */
-  $handler = $view->new_display('page', 'Saturday Schedule', 'page_1');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Schedule - Saturday, April 11th';
-  $handler->display->display_options['defaults']['css_class'] = FALSE;
-  $handler->display->display_options['css_class'] = 'views-row-lines';
-  $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['grouping'] = array(
-    0 => array(
-      'field' => 'field_s_time',
-      'rendered' => 1,
-      'rendered_strip' => 0,
-    ),
-  );
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Content: Author */
-  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
-  $handler->display->display_options['relationships']['uid']['table'] = 'node';
-  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
-  /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_s_speakers_target_id']['id'] = 'field_s_speakers_target_id';
-  $handler->display->display_options['relationships']['field_s_speakers_target_id']['table'] = 'field_data_field_s_speakers';
-  $handler->display->display_options['relationships']['field_s_speakers_target_id']['field'] = 'field_s_speakers_target_id';
-  /* Relationship: Flags: add_session_to_my_schedule */
-  $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
-  $handler->display->display_options['relationships']['flag_content_rel']['table'] = 'node';
-  $handler->display->display_options['relationships']['flag_content_rel']['field'] = 'flag_content_rel';
-  $handler->display->display_options['relationships']['flag_content_rel']['required'] = 0;
-  $handler->display->display_options['relationships']['flag_content_rel']['flag'] = 'add_session_to_my_schedule';
-  /* Relationship: Content: Taxonomy terms on node */
-  $handler->display->display_options['relationships']['term_node_tid']['id'] = 'term_node_tid';
-  $handler->display->display_options['relationships']['term_node_tid']['table'] = 'node';
-  $handler->display->display_options['relationships']['term_node_tid']['field'] = 'term_node_tid';
-  $handler->display->display_options['relationships']['term_node_tid']['vocabularies'] = array(
-    'time' => 'time',
-    'audience' => 0,
-    'stanford_slide_category' => 0,
-    'sponsorship_level' => 0,
-    'tags' => 0,
-    'track' => 0,
-  );
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['text'] = '<h3>[title]</h3>';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: Speaker/Moderator(s) */
-  $handler->display->display_options['fields']['field_s_speakers']['id'] = 'field_s_speakers';
-  $handler->display->display_options['fields']['field_s_speakers']['table'] = 'field_data_field_s_speakers';
-  $handler->display->display_options['fields']['field_s_speakers']['field'] = 'field_s_speakers';
-  $handler->display->display_options['fields']['field_s_speakers']['label'] = 'Registered Speaker(s)';
-  $handler->display->display_options['fields']['field_s_speakers']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_s_speakers']['settings'] = array(
-    'link' => 1,
-  );
-  $handler->display->display_options['fields']['field_s_speakers']['delta_offset'] = '0';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_s_time']['id'] = 'field_s_time';
-  $handler->display->display_options['fields']['field_s_time']['table'] = 'field_data_field_s_time';
-  $handler->display->display_options['fields']['field_s_time']['field'] = 'field_s_time';
-  $handler->display->display_options['fields']['field_s_time']['label'] = '';
-  $handler->display->display_options['fields']['field_s_time']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_s_time']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_s_time']['alter']['text'] = '<h2>[field_s_time]</h2>';
-  $handler->display->display_options['fields']['field_s_time']['element_label_colon'] = FALSE;
-  /* Field: Content: Location */
-  $handler->display->display_options['fields']['field_location']['id'] = 'field_location';
-  $handler->display->display_options['fields']['field_location']['table'] = 'field_data_field_location';
-  $handler->display->display_options['fields']['field_location']['field'] = 'field_location';
-  $handler->display->display_options['fields']['field_location']['label'] = '';
-  $handler->display->display_options['fields']['field_location']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_location']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_location']['delta_offset'] = '0';
-  /* Field: Content: Audience */
-  $handler->display->display_options['fields']['field_s_audience']['id'] = 'field_s_audience';
-  $handler->display->display_options['fields']['field_s_audience']['table'] = 'field_data_field_s_audience';
-  $handler->display->display_options['fields']['field_s_audience']['field'] = 'field_s_audience';
-  $handler->display->display_options['fields']['field_s_audience']['label'] = '';
-  $handler->display->display_options['fields']['field_s_audience']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_s_audience']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_s_audience']['type'] = 'taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_s_audience']['delta_offset'] = '0';
-  /* Field: Content: Track */
-  $handler->display->display_options['fields']['field_s_track']['id'] = 'field_s_track';
-  $handler->display->display_options['fields']['field_s_track']['table'] = 'field_data_field_s_track';
-  $handler->display->display_options['fields']['field_s_track']['field'] = 'field_s_track';
-  $handler->display->display_options['fields']['field_s_track']['label'] = '';
-  $handler->display->display_options['fields']['field_s_track']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_s_track']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_s_track']['type'] = 'taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_s_track']['delta_offset'] = '0';
-  /* Field: Content: Edit link */
-  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
-  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
-  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
-  $handler->display->display_options['fields']['edit_node']['label'] = '';
-  $handler->display->display_options['fields']['edit_node']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
-  /* Field: Global: Custom text */
-  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div>[title]</div>
-<div class="indent">
-  <div><strong> Location:</strong> [field_location]</div>
-  <div><strong>Audience</strong> [field_s_audience]</div>
-  <div><strong>Track(s):</strong> [field_s_track]</div>
-  <div><strong>Speaker/Moderator(s):</strong> [field_s_speakers]</div>
-  <div>[edit_node]</div>
-</div>';
-  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Field: Flags: Flag link */
-  $handler->display->display_options['fields']['ops']['id'] = 'ops';
-  $handler->display->display_options['fields']['ops']['table'] = 'flagging';
-  $handler->display->display_options['fields']['ops']['field'] = 'ops';
-  $handler->display->display_options['fields']['ops']['relationship'] = 'flag_content_rel';
-  $handler->display->display_options['fields']['ops']['label'] = '';
-  $handler->display->display_options['fields']['ops']['element_label_colon'] = FALSE;
-  $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Broken/missing handler */
-  $handler->display->display_options['sorts']['field_s_day_value']['id'] = 'field_s_day_value';
-  $handler->display->display_options['sorts']['field_s_day_value']['table'] = 'field_data_field_s_day';
-  $handler->display->display_options['sorts']['field_s_day_value']['field'] = 'field_s_day_value';
-  /* Sort criterion: Taxonomy term: Weight */
-  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['relationship'] = 'term_node_tid';
-  /* Sort criterion: Broken/missing handler */
-  $handler->display->display_options['sorts']['field_s_time_tid']['id'] = 'field_s_time_tid';
-  $handler->display->display_options['sorts']['field_s_time_tid']['table'] = 'field_data_field_s_time';
-  $handler->display->display_options['sorts']['field_s_time_tid']['field'] = 'field_s_time_tid';
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'stanford_session' => 'stanford_session',
-  );
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = '1';
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['field_s_day_value']['id'] = 'field_s_day_value';
-  $handler->display->display_options['filters']['field_s_day_value']['table'] = 'field_data_field_s_day';
-  $handler->display->display_options['filters']['field_s_day_value']['field'] = 'field_s_day_value';
-  $handler->display->display_options['filters']['field_s_day_value']['value'] = array(
-    'Saturday, April 11th' => 'Saturday, April 11th',
-  );
-  $handler->display->display_options['filters']['field_s_day_value']['expose']['operator_id'] = 'field_s_day_value_op';
-  $handler->display->display_options['filters']['field_s_day_value']['expose']['label'] = 'Day (field_s_day)';
-  $handler->display->display_options['filters']['field_s_day_value']['expose']['operator'] = 'field_s_day_value_op';
-  $handler->display->display_options['filters']['field_s_day_value']['expose']['identifier'] = 'field_s_day_value';
-  $handler->display->display_options['path'] = 'schedule/saturday-april-11';
-  $handler->display->display_options['menu']['title'] = 'Saturday Schedule';
-  $handler->display->display_options['menu']['weight'] = '0';
-  $handler->display->display_options['menu']['name'] = 'main-menu';
-  $handler->display->display_options['menu']['context'] = 0;
-  $handler->display->display_options['menu']['context_only_inline'] = 0;
-  $handler->display->display_options['tab_options']['type'] = 'normal';
-  $handler->display->display_options['tab_options']['title'] = 'Sessions';
-  $handler->display->display_options['tab_options']['weight'] = '0';
-  $handler->display->display_options['tab_options']['name'] = 'main-menu';
   $export['schedule'] = $view;
 
   $view = new view();
@@ -1230,6 +1026,7 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler = $view->new_display('page', 'My Schedule', 'my_schedule');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'My Schedule';
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
@@ -1318,42 +1115,12 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_first_name']['id'] = 'field_first_name';
-  $handler->display->display_options['fields']['field_first_name']['table'] = 'field_data_field_first_name';
-  $handler->display->display_options['fields']['field_first_name']['field'] = 'field_first_name';
-  $handler->display->display_options['fields']['field_first_name']['relationship'] = 'field_s_speakers_target_id';
-  $handler->display->display_options['fields']['field_first_name']['label'] = '';
-  $handler->display->display_options['fields']['field_first_name']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_first_name']['element_label_colon'] = FALSE;
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_last_name']['id'] = 'field_last_name';
-  $handler->display->display_options['fields']['field_last_name']['table'] = 'field_data_field_last_name';
-  $handler->display->display_options['fields']['field_last_name']['field'] = 'field_last_name';
-  $handler->display->display_options['fields']['field_last_name']['relationship'] = 'field_s_speakers_target_id';
-  $handler->display->display_options['fields']['field_last_name']['label'] = 'Speaker(s)';
-  $handler->display->display_options['fields']['field_last_name']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_last_name']['alter']['text'] = '[field_first_name] [field_last_name]';
-  $handler->display->display_options['fields']['field_last_name']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_last_name']['alter']['path'] = 'user/[uid]';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_s_day']['id'] = 'field_s_day';
-  $handler->display->display_options['fields']['field_s_day']['table'] = 'field_data_field_s_day';
-  $handler->display->display_options['fields']['field_s_day']['field'] = 'field_s_day';
   /* Field: Content: Location */
   $handler->display->display_options['fields']['field_location']['id'] = 'field_location';
   $handler->display->display_options['fields']['field_location']['table'] = 'field_data_field_location';
   $handler->display->display_options['fields']['field_location']['field'] = 'field_location';
   $handler->display->display_options['fields']['field_location']['delta_offset'] = '0';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_s_time']['id'] = 'field_s_time';
-  $handler->display->display_options['fields']['field_s_time']['table'] = 'field_data_field_s_time';
-  $handler->display->display_options['fields']['field_s_time']['field'] = 'field_s_time';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Broken/missing handler */
-  $handler->display->display_options['sorts']['field_s_day_value']['id'] = 'field_s_day_value';
-  $handler->display->display_options['sorts']['field_s_day_value']['table'] = 'field_data_field_s_day';
-  $handler->display->display_options['sorts']['field_s_day_value']['field'] = 'field_s_day_value';
   /* Sort criterion: Taxonomy term: Weight */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
@@ -1375,6 +1142,7 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler = $view->new_display('page', 'Flagged Sessions', 'flags');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Flagged Sessions';
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'administer nodes';
