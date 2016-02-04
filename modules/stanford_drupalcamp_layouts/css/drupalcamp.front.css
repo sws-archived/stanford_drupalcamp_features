@@ -1,0 +1,49 @@
+.front .header {
+  margin-top: 0;
+  padding-top: 0;
+  background: #8B1515;
+}
+#header #logo,
+#name-and-slogan {
+  display: none;
+}
+
+#block-bean-drupalcamp-banner {
+  position: relative;
+}
+
+.banner-overlay {
+  width: 50%;
+  text-align: right;
+  display: block;
+  height: 70px;
+  position: absolute;
+  bottom: 43px;
+  vertical-align: bottom;
+  right: 0px;
+}
+
+.banner-overlay > div {
+  background: transparent;
+  top: auto;
+  padding: 0;
+  max-width: 100%;
+  text-align: right;
+  vertical-align: bottom;
+}
+
+.banner-overlay h3 {
+  color: #FFF;
+  font-size: 3.5em;
+}
+
+#header-content {
+  position: relative;
+}
+
+#block-search-form {
+  position: absolute;
+  right: 0px;
+  top: 10px;
+  z-index: 100;
+}

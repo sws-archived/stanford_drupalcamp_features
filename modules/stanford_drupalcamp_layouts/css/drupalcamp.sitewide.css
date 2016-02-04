@@ -1,0 +1,13 @@
+.page-community .views-row {
+  clear: none;
+  margin-bottom: 10px;
+}
+
+.page-community .views-row:nth-child(2n+1) {
+  margin-left: 0;
+  clear: both;
+}
+
+#global-header {
+  display: none;
+}

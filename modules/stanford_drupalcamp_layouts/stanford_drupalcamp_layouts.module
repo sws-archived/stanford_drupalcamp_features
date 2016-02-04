@@ -5,3 +5,14 @@
  */
 
 include_once 'stanford_drupalcamp_layouts.features.inc';
+
+
+/**
+ * Implements hook_preprocess().
+ */
+function stanford_drupalcamp_layouts_preprocess_page(&$vars) {
+  if (drupal_is_front_page()) {
+    $css_path = drupal_get_path("module", "stanford_drupalcamp_layouts") . "/css/drupalcamp.front.css";
+    drupal_add_css($css_path, array("group" => CSS_THEME, "weight" => 101));
+  }
+}
