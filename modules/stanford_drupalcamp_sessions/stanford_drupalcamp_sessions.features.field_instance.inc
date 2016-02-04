@@ -139,8 +139,8 @@ function stanford_drupalcamp_sessions_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-stanford_session-field_location'
-  $field_instances['node-stanford_session-field_location'] = array(
+  // Exported field_instance: 'node-stanford_session-field_s_location'
+  $field_instances['node-stanford_session-field_s_location'] = array(
     'bundle' => 'stanford_session',
     'default_value' => NULL,
     'deleted' => 0,
@@ -161,7 +161,7 @@ function stanford_drupalcamp_sessions_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_location',
+    'field_name' => 'field_s_location',
     'label' => 'Location',
     'required' => 0,
     'settings' => array(
@@ -423,8 +423,8 @@ function stanford_drupalcamp_sessions_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-stanford_session-field_session_day'
-  $field_instances['node-stanford_session-field_session_day'] = array(
+  // Exported field_instance: 'node-stanford_session-field_s_session_day'
+  $field_instances['node-stanford_session-field_s_session_day'] = array(
     'bundle' => 'stanford_session',
     'deleted' => 0,
     'description' => 'The day this session will be held.',
@@ -451,7 +451,7 @@ function stanford_drupalcamp_sessions_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_session_day',
+    'field_name' => 'field_s_session_day',
     'label' => 'Session Day',
     'required' => 1,
     'settings' => array(
@@ -479,8 +479,8 @@ function stanford_drupalcamp_sessions_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-stanford_session-field_session_time_slot'
-  $field_instances['node-stanford_session-field_session_time_slot'] = array(
+  // Exported field_instance: 'node-stanford_session-field_s_session_time_slot'
+  $field_instances['node-stanford_session-field_s_session_time_slot'] = array(
     'bundle' => 'stanford_session',
     'default_value' => NULL,
     'deleted' => 0,
@@ -501,7 +501,7 @@ function stanford_drupalcamp_sessions_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_session_time_slot',
+    'field_name' => 'field_s_session_time_slot',
     'label' => 'Time Slot',
     'required' => 0,
     'settings' => array(

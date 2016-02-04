@@ -13,7 +13,7 @@ function stanford_drupalcamp_layouts_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'all_minus_front';
+  $context->name = 'drupalcamp_all_minus_front';
   $context->description = 'All pages except front and admin';
   $context->tag = 'DrupalCamp';
   $context->conditions = array(
@@ -45,7 +45,7 @@ function stanford_drupalcamp_layouts_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('All pages except front and admin');
   t('DrupalCamp');
-  $export['all_minus_front'] = $context;
+  $export['drupalcamp_all_minus_front'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */

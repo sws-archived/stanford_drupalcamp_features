@@ -11,7 +11,7 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $export = array();
 
   $view = new view();
-  $view->name = 'schedule';
+  $view->name = 'drupalcamp_schedule';
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
@@ -76,13 +76,13 @@ function stanford_drupalcamp_sessions_views_default_views() {
   );
   $handler->display->display_options['fields']['field_s_speakers']['delta_offset'] = '0';
   /* Field: Content: Location */
-  $handler->display->display_options['fields']['field_location']['id'] = 'field_location';
-  $handler->display->display_options['fields']['field_location']['table'] = 'field_data_field_location';
-  $handler->display->display_options['fields']['field_location']['field'] = 'field_location';
-  $handler->display->display_options['fields']['field_location']['label'] = 'Time and Location';
-  $handler->display->display_options['fields']['field_location']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_location']['alter']['text'] = '[field_s_time], [field_location]';
-  $handler->display->display_options['fields']['field_location']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_s_location']['id'] = 'field_s_location';
+  $handler->display->display_options['fields']['field_s_location']['table'] = 'field_data_field_s_location';
+  $handler->display->display_options['fields']['field_s_location']['field'] = 'field_s_location';
+  $handler->display->display_options['fields']['field_s_location']['label'] = 'Time and Location';
+  $handler->display->display_options['fields']['field_s_location']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_s_location']['alter']['text'] = '[field_s_time], [field_s_location]';
+  $handler->display->display_options['fields']['field_s_location']['delta_offset'] = '0';
   /* Field: Content: Audience */
   $handler->display->display_options['fields']['field_s_audience']['id'] = 'field_s_audience';
   $handler->display->display_options['fields']['field_s_audience']['table'] = 'field_data_field_s_audience';
@@ -127,7 +127,7 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler->display->display_options['arguments']['date_argument']['granularity_reset'] = 0;
   $handler->display->display_options['arguments']['date_argument']['use_fromto'] = 'no';
   $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
-    'field_data_field_session_day.field_session_day_value' => 'field_data_field_session_day.field_session_day_value',
+    'field_data_field_s_session_day.field_s_session_day_value' => 'field_data_field_s_session_day.field_s_session_day_value',
   );
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
@@ -159,7 +159,7 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
-      'field' => 'field_session_time_slot',
+      'field' => 'field_s_session_time_slot',
       'rendered' => 1,
       'rendered_strip' => 1,
     ),
@@ -218,13 +218,13 @@ function stanford_drupalcamp_sessions_views_default_views() {
   );
   $handler->display->display_options['fields']['field_s_speakers']['delta_offset'] = '0';
   /* Field: Content: Location */
-  $handler->display->display_options['fields']['field_location']['id'] = 'field_location';
-  $handler->display->display_options['fields']['field_location']['table'] = 'field_data_field_location';
-  $handler->display->display_options['fields']['field_location']['field'] = 'field_location';
-  $handler->display->display_options['fields']['field_location']['label'] = '';
-  $handler->display->display_options['fields']['field_location']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_location']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_location']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_s_location']['id'] = 'field_s_location';
+  $handler->display->display_options['fields']['field_s_location']['table'] = 'field_data_field_s_location';
+  $handler->display->display_options['fields']['field_s_location']['field'] = 'field_s_location';
+  $handler->display->display_options['fields']['field_s_location']['label'] = '';
+  $handler->display->display_options['fields']['field_s_location']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_location']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_location']['delta_offset'] = '0';
   /* Field: Content: Audience */
   $handler->display->display_options['fields']['field_s_audience']['id'] = 'field_s_audience';
   $handler->display->display_options['fields']['field_s_audience']['table'] = 'field_data_field_s_audience';
@@ -257,7 +257,7 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div>[title]</div>
 <div class="indent">
-  <div><strong> Location:</strong> [field_location]</div>
+  <div><strong> Location:</strong> [field_s_location]</div>
   <div><strong>Audience</strong> [field_s_audience]</div>
   <div><strong>Track(s):</strong> [field_s_track]</div>
   <div><strong>Speaker/Moderator(s):</strong> [field_s_speakers]</div>
@@ -272,11 +272,11 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler->display->display_options['fields']['ops']['label'] = '';
   $handler->display->display_options['fields']['ops']['element_label_colon'] = FALSE;
   /* Field: Content: Time Slot */
-  $handler->display->display_options['fields']['field_session_time_slot']['id'] = 'field_session_time_slot';
-  $handler->display->display_options['fields']['field_session_time_slot']['table'] = 'field_data_field_session_time_slot';
-  $handler->display->display_options['fields']['field_session_time_slot']['field'] = 'field_session_time_slot';
-  $handler->display->display_options['fields']['field_session_time_slot']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_session_time_slot']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_s_session_time_slot']['id'] = 'field_s_session_time_slot';
+  $handler->display->display_options['fields']['field_s_session_time_slot']['table'] = 'field_data_field_s_session_time_slot';
+  $handler->display->display_options['fields']['field_s_session_time_slot']['field'] = 'field_s_session_time_slot';
+  $handler->display->display_options['fields']['field_s_session_time_slot']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_session_time_slot']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Taxonomy term: Weight */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
@@ -309,10 +309,10 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler->display->display_options['menu']['name'] = 'main-menu';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
-  $export['schedule'] = $view;
+  $export['drupalcamp_schedule'] = $view;
 
   $view = new view();
-  $view->name = 'sessions';
+  $view->name = 'drupalcamp_sessions';
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
@@ -616,7 +616,7 @@ function stanford_drupalcamp_sessions_views_default_views() {
     'count' => 'count',
     'field_s_day' => 'field_s_day',
     'field_s_time' => 'field_s_time',
-    'field_location' => 'field_location',
+    'field_s_location' => 'field_s_location',
     'name' => 'name',
     'field_s_track' => 'field_s_track',
     'field_s_session_status' => 'field_s_session_status',
@@ -670,7 +670,7 @@ function stanford_drupalcamp_sessions_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_location' => array(
+    'field_s_location' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -850,10 +850,10 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler->display->display_options['fields']['field_s_time']['table'] = 'field_data_field_s_time';
   $handler->display->display_options['fields']['field_s_time']['field'] = 'field_s_time';
   /* Field: Content: Location */
-  $handler->display->display_options['fields']['field_location']['id'] = 'field_location';
-  $handler->display->display_options['fields']['field_location']['table'] = 'field_data_field_location';
-  $handler->display->display_options['fields']['field_location']['field'] = 'field_location';
-  $handler->display->display_options['fields']['field_location']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_s_location']['id'] = 'field_s_location';
+  $handler->display->display_options['fields']['field_s_location']['table'] = 'field_data_field_s_location';
+  $handler->display->display_options['fields']['field_s_location']['field'] = 'field_s_location';
+  $handler->display->display_options['fields']['field_s_location']['delta_offset'] = '0';
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
@@ -975,18 +975,18 @@ function stanford_drupalcamp_sessions_views_default_views() {
     5 => 0,
     13 => 0,
   );
-  /* Filter criterion: Content: Location (field_location) */
-  $handler->display->display_options['filters']['field_location_value']['id'] = 'field_location_value';
-  $handler->display->display_options['filters']['field_location_value']['table'] = 'field_data_field_location';
-  $handler->display->display_options['filters']['field_location_value']['field'] = 'field_location_value';
-  $handler->display->display_options['filters']['field_location_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_location_value']['expose']['operator_id'] = 'field_location_value_op';
-  $handler->display->display_options['filters']['field_location_value']['expose']['label'] = 'Location';
-  $handler->display->display_options['filters']['field_location_value']['expose']['use_operator'] = TRUE;
-  $handler->display->display_options['filters']['field_location_value']['expose']['operator'] = 'field_location_value_op';
-  $handler->display->display_options['filters']['field_location_value']['expose']['identifier'] = 'field_location_value';
-  $handler->display->display_options['filters']['field_location_value']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_location_value']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: Location (field_s_location) */
+  $handler->display->display_options['filters']['field_s_location_value']['id'] = 'field_s_location_value';
+  $handler->display->display_options['filters']['field_s_location_value']['table'] = 'field_data_field_s_location';
+  $handler->display->display_options['filters']['field_s_location_value']['field'] = 'field_s_location_value';
+  $handler->display->display_options['filters']['field_s_location_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_s_location_value']['expose']['operator_id'] = 'field_s_location_value_op';
+  $handler->display->display_options['filters']['field_s_location_value']['expose']['label'] = 'Location';
+  $handler->display->display_options['filters']['field_s_location_value']['expose']['use_operator'] = TRUE;
+  $handler->display->display_options['filters']['field_s_location_value']['expose']['operator'] = 'field_s_location_value_op';
+  $handler->display->display_options['filters']['field_s_location_value']['expose']['identifier'] = 'field_s_location_value';
+  $handler->display->display_options['filters']['field_s_location_value']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_s_location_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     11 => 0,
@@ -1040,7 +1040,7 @@ function stanford_drupalcamp_sessions_views_default_views() {
     'title' => 'title',
     'field_s_speakers' => 'field_s_speakers',
     'field_s_day' => 'field_s_day',
-    'field_location' => 'field_location',
+    'field_s_location' => 'field_s_location',
     'field_s_time' => 'field_s_time',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
@@ -1062,7 +1062,7 @@ function stanford_drupalcamp_sessions_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_location' => array(
+    'field_s_location' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -1116,20 +1116,20 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
   /* Field: Content: Location */
-  $handler->display->display_options['fields']['field_location']['id'] = 'field_location';
-  $handler->display->display_options['fields']['field_location']['table'] = 'field_data_field_location';
-  $handler->display->display_options['fields']['field_location']['field'] = 'field_location';
-  $handler->display->display_options['fields']['field_location']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_s_location']['id'] = 'field_s_location';
+  $handler->display->display_options['fields']['field_s_location']['table'] = 'field_data_field_s_location';
+  $handler->display->display_options['fields']['field_s_location']['field'] = 'field_s_location';
+  $handler->display->display_options['fields']['field_s_location']['delta_offset'] = '0';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Taxonomy term: Weight */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
   $handler->display->display_options['sorts']['weight']['relationship'] = 'term_node_tid';
-  /* Sort criterion: Content: Location (field_location) */
-  $handler->display->display_options['sorts']['field_location_value']['id'] = 'field_location_value';
-  $handler->display->display_options['sorts']['field_location_value']['table'] = 'field_data_field_location';
-  $handler->display->display_options['sorts']['field_location_value']['field'] = 'field_location_value';
+  /* Sort criterion: Content: Location (field_s_location) */
+  $handler->display->display_options['sorts']['field_s_location_value']['id'] = 'field_s_location_value';
+  $handler->display->display_options['sorts']['field_s_location_value']['table'] = 'field_data_field_s_location';
+  $handler->display->display_options['sorts']['field_s_location_value']['field'] = 'field_s_location_value';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['path'] = 'schedule/mine';
   $handler->display->display_options['menu']['title'] = 'My Schedule';
@@ -1248,7 +1248,7 @@ function stanford_drupalcamp_sessions_views_default_views() {
   $handler->display->display_options['menu']['name'] = 'main-menu';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
-  $export['sessions'] = $view;
+  $export['drupalcamp_sessions'] = $view;
 
   return $export;
 }

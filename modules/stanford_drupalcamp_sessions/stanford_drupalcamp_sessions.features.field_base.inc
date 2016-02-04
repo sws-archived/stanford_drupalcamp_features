@@ -10,13 +10,13 @@
 function stanford_drupalcamp_sessions_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_location'
-  $field_bases['field_location'] = array(
+  // Exported field_base: 'field_s_location'
+  $field_bases['field_s_location'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_location',
+    'field_name' => 'field_s_location',
     'field_permissions' => array(
       'type' => 2,
     ),
@@ -167,13 +167,13 @@ function stanford_drupalcamp_sessions_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_session_day'
-  $field_bases['field_session_day'] = array(
+  // Exported field_base: 'field_s_session_day'
+  $field_bases['field_s_session_day'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_session_day',
+    'field_name' => 'field_s_session_day',
     'field_permissions' => array(
       'type' => 2,
     ),
@@ -199,13 +199,13 @@ function stanford_drupalcamp_sessions_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_session_time_slot'
-  $field_bases['field_session_time_slot'] = array(
+  // Exported field_base: 'field_s_session_time_slot'
+  $field_bases['field_s_session_time_slot'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_session_time_slot',
+    'field_name' => 'field_s_session_time_slot',
     'field_permissions' => array(
       'type' => 2,
     ),

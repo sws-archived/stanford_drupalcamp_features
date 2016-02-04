@@ -11,7 +11,7 @@ function stanford_drupalcamp_registration_views_default_views() {
   $export = array();
 
   $view = new view();
-  $view->name = 'attendees';
+  $view->name = 'drupalcamp_attendees';
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'users';
@@ -69,7 +69,7 @@ function stanford_drupalcamp_registration_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'attendees';
-  $export['attendees'] = $view;
+  $export['drupalcamp_attendees'] = $view;
 
   $view = new view();
   $view->name = 'drupalcamp_community';
@@ -251,7 +251,7 @@ function stanford_drupalcamp_registration_views_default_views() {
   $export['drupalcamp_community'] = $view;
 
   $view = new view();
-  $view->name = 'speakers_users';
+  $view->name = 'drupalcamp_speakers_users';
   $view->description = 'List, add, and edit users.';
   $view->tag = 'admin';
   $view->base_table = 'users';
@@ -526,7 +526,7 @@ function stanford_drupalcamp_registration_views_default_views() {
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
-  $export['speakers_users'] = $view;
+  $export['drupalcamp_speakers_users'] = $view;
 
   return $export;
 }
