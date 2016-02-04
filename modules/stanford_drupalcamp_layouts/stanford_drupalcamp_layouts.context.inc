@@ -69,9 +69,9 @@ function stanford_drupalcamp_layouts_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'block-1' => array(
-          'module' => 'block',
-          'delta' => '1',
+        'bean-drupalcamp-sign-up-for-drupal-ca' => array(
+          'module' => 'bean',
+          'delta' => 'drupalcamp-sign-up-for-drupal-ca',
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
@@ -108,9 +108,9 @@ function stanford_drupalcamp_layouts_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'block-3' => array(
-          'module' => 'block',
-          'delta' => '3',
+        'bean-drupalcamp-propose-a-session-but' => array(
+          'module' => 'bean',
+          'delta' => 'drupalcamp-propose-a-session-but',
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
@@ -118,7 +118,7 @@ function stanford_drupalcamp_layouts_context_default_contexts() {
           'module' => 'system',
           'delta' => 'user-menu',
           'region' => 'sidebar_second',
-          'weight' => '10',
+          'weight' => '-9',
         ),
       ),
     ),
@@ -242,9 +242,9 @@ function stanford_drupalcamp_layouts_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'block-3' => array(
-          'module' => 'block',
-          'delta' => '3',
+        'bean-drupalcamp-propose-a-session-but' => array(
+          'module' => 'bean',
+          'delta' => 'drupalcamp-propose-a-session-but',
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
