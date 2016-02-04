@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Stanford DrupalCamp Sponsor feature.
+ */
+
+include_once 'stanford_drupalcamp_sponsor.features.inc';
