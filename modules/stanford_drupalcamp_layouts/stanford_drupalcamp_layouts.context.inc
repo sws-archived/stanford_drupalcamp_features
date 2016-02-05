@@ -180,7 +180,7 @@ function stanford_drupalcamp_layouts_context_default_contexts() {
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'drupalcamp_sitewide';
-  $context->description = 'DrupalCamp Sitewide  ';
+  $context->description = 'DrupalCamp Sitewide';
   $context->tag = 'DrupalCamp';
   $context->conditions = array(
     'path' => array(
@@ -199,12 +199,6 @@ function stanford_drupalcamp_layouts_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'user-online' => array(
-          'module' => 'user',
-          'delta' => 'online',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
         'bean-drupalcamp-twitter-block' => array(
           'module' => 'bean',
           'delta' => 'drupalcamp-twitter-block',
