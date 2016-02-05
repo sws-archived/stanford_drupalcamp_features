@@ -884,12 +884,6 @@ function stanford_drupalcamp_sessions_views_default_views() {
     'Submitted' => 'Submitted',
     'Accepted' => 'Accepted',
   );
-  /* Filter criterion: Content: Nid */
-  $handler->display->display_options['filters']['nid']['id'] = 'nid';
-  $handler->display->display_options['filters']['nid']['table'] = 'node';
-  $handler->display->display_options['filters']['nid']['field'] = 'nid';
-  $handler->display->display_options['filters']['nid']['operator'] = 'regular_expression';
-  $handler->display->display_options['filters']['nid']['value']['value'] = '[^173,175]';
   $handler->display->display_options['path'] = 'sessions/proposed';
   $handler->display->display_options['menu']['title'] = 'Proposed Sessions';
   $handler->display->display_options['menu']['weight'] = '0';
